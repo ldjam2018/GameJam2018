@@ -1,3 +1,3 @@
 # GameJam2018
 
-repo for our gamejam game
+repo for our gamejam game.
