@@ -20,12 +20,6 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-//		xAxis = XboxCtrlrInput.XCI.GetAxis (XboxCtrlrInput.XboxAxis.LeftStickX) * movementSpeed;
-
-
-
-
 		float rightTriggerPressed = XboxCtrlrInput.XCI.GetAxis (XboxCtrlrInput.XboxAxis.RightTrigger);
 		float leftTriggerPressed = XboxCtrlrInput.XCI.GetAxis (XboxCtrlrInput.XboxAxis.LeftTrigger);
 
@@ -37,8 +31,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		yAxis = XboxCtrlrInput.XCI.GetAxis (XboxCtrlrInput.XboxAxis.LeftStickY) * rotationSpeed;
 
-		Debug.Log("xAxis: " + xAxis + " yAxis: " + yAxis + " rightTrigger: " + rightTriggerPressed + " leftTrigger: " + leftTriggerPressed + " Y: " + XboxCtrlrInput.XCI.GetButtonDown (XboxCtrlrInput.XboxButton.Y));
-//		Debug.Log();
+//		Debug.Log("xAxis: " + xAxis + " yAxis: " + yAxis + " rightTrigger: " + rightTriggerPressed + " leftTrigger: " + leftTriggerPressed + " Y: " + XboxCtrlrInput.XCI.GetButtonDown (XboxCtrlrInput.XboxButton.Y));
 	}
 
 	private void FixedUpdate() {
