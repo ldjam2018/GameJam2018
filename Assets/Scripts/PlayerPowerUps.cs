@@ -6,19 +6,20 @@ public class PlayerPowerUps : MonoBehaviour {
 
     private bool isBoostActive;
     private bool isRocketActive;
-    private float boostSpeed = 2f;
+    private float boostSpeed = 4f;
     private GameObject enemy;
     public GameObject rocket;
 
 
 	// Use this for initialization
 	void Start () {
-        isBoostActive = false;
+		isBoostActive = true;
         isRocketActive = false;
 
-        if (this.transform.parent.tag == "Player01")
+        if (this.transform.tag == "Player01")
         {
             enemy = GameObject.FindWithTag("Player02");
+			Debug.Log (enemy.name);
         }
         else
         {
@@ -27,19 +28,20 @@ public class PlayerPowerUps : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+//	void Update () {
+//		
+//	}
 
    public float UsePowerUp()
     {
         if (isBoostActive)
         {
+			isBoostActive = false;
             return boostSpeed;
         }
         else if (isRocketActive)
         {
-            
+			isRocketActive = false;
             Vector3 playerPos = transform.position;
             Vector3 playerDirection = transform.forward;
             Quaternion playerRotation = transform.rotation;
@@ -47,14 +49,17 @@ public class PlayerPowerUps : MonoBehaviour {
 
             Vector3 spawnPos = playerPos + playerDirection * spawnDistance +Vector3.up*2;
 
-            GameObject[] rockets = {
+			GameObject [] rockets = new GameObject[3]{
             Instantiate(rocket, spawnPos + Vector3.right * 2, Quaternion.identity),
             Instantiate(rocket, spawnPos, Quaternion.identity),
             Instantiate(rocket, spawnPos + Vector3.left * 2, Quaternion.identity)
             };
 
+			Debug.Log (rockets.Length);
+
             foreach (GameObject rocket in rockets){
                 rocket.gameObject.GetComponent<Rocket>().SetTarget(enemy);
+				Debug.Log ("rocket target is: " + enemy.name);
             }
         }
         return 1f;

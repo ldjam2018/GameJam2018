@@ -234,8 +234,10 @@ public class PositionTracker : MonoBehaviour {
 		if (racerNumber == 0) {
 			if (racePosition - 1 == 0) {
 				player01Position.text = "1st";
+				player02Position.text = "2nd";
 			} else if (racePosition - 1 == 1) {
 				player01Position.text = "2nd";
+				player02Position.text = "1st";
 			} 
 //				else if (racePosition - 1 == 2) {
 //				playerPosition.text = "3rd";

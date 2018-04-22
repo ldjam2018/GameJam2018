@@ -193,13 +193,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae5b951471ef92468fa63cbddf0efe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0
-  maxForce: 0
-  arrivalRadius: 0
+  maxSpeed: 50
+  maxForce: 50
+  arrivalRadius: 5
   pathRadius: 0
-  explodeDistance: 1000
-  enemyTarget: {fileID: 0}
-  explosion: {fileID: 0}
+  explodeDistance: 2
+  explosion: {fileID: 1512001431810726, guid: 7d5631f0271f62449a7952db6049b864, type: 2}
 --- !u!114 &114830178668126948
 MonoBehaviour:
   m_ObjectHideFlags: 1

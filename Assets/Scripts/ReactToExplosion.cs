@@ -17,7 +17,7 @@ public class ReactToExplosion : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
-        Debug.Log("Collision");
+//        Debug.Log("Collision");
         if (col.gameObject.tag == "Explosion")
         {
             Debug.Log("Apply Exlosion force");

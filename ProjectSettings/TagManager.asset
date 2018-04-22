@@ -10,6 +10,7 @@ TagManager:
   - Explosion
   - BoostPickup
   - RocketPickup
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
