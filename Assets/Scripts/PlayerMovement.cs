@@ -9,20 +9,81 @@ public class PlayerMovement : MonoBehaviour {
 
 	private float xAxis, yAxis;
 
-	public float movementSpeed = 7;
-	public float rotationSpeed = 2;
+    private bool bumperDepressed=false;
+    public float movementSpeed;
+    public float minimumSpeed;
+    public float maximumSpeed;
+    public float rotationSpeed;
+    public float boostBonus;
+    public GameObject powerBar;
 
 	public XboxController controllerNumber;
 
-	// Use this for initialization
-	void Start () {
+    //------------------------------------------------------------------------
+
+    public int currentCheckpoint = 0;               //the last checkpoint that the car passed
+    public int lap;                             //the current lap the racer is on
+    public int raceNumOfLaps;                   //number of laps in the race
+
+    private bool movementDisabled = false;
+
+    /// <summary>
+    /// Set the last checkpoint number the Player has passed.
+    /// </summary>
+    public void SetCurrentCheckpointNo(int checkpointNo)
+    {
+
+        currentCheckpoint = checkpointNo;
+    }
+
+    /// <summary>
+    /// Returns the last checkpoint number the Player has passed.
+    /// </summary>
+    public int GetCurrentCheckpointNo()
+    {
+        //		XCI.GetButton(XboxButton.RightBumper)
+        return currentCheckpoint;
+    }
+
+
+    public void IncrementLap()
+    {
+        if (lap < raceNumOfLaps)
+        {   //if not on the final lap
+            lap++;  //increment lap
+                    //			GameObject.Find ("GUICanvas").GetComponent<GUITimer> ().UpdateLapsElapsedText (lap, raceNumOfLaps);	//update the GUI to display lap counter
+        }
+        else
+        {   //else player has completed their final lap
+            setMovementDisabled(true);  //disabled movement as player has finished
+
+            //call GUI to display position and lap times
+            //			GameObject.Find ("GUICanvas").GetComponent<GUITimer> ().completedRace ();
+            //			GameObject.Find ("GUICanvas").GetComponent<GUITimer> ().racerFinished (gameObject.name);
+        }
+    }
+
+    public void setMovementDisabled(bool isDisabled)
+    {
+        movementDisabled = isDisabled;
+    }
+
+    //------------------------------------------------------------------------
+
+    // Use this for initialization
+    void Start () {
 		this.rigidBody = GetComponent<Rigidbody>();
-
-
+        minimumSpeed = 60;
+        maximumSpeed = 180;
+        movementSpeed = 60;
+        rotationSpeed = 120;
+        powerBar = transform.GetChild(0).transform.GetChild(2).gameObject;
+        boostBonus = 1f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        movementSpeed = powerBar.GetComponent<ItemPowerBar>().GetSpeed(minimumSpeed, maximumSpeed)*boostBonus;
 		float rightTriggerPressed = XboxCtrlrInput.XCI.GetAxis (XboxCtrlrInput.XboxAxis.RightTrigger, controllerNumber);
 		float leftTriggerPressed = XboxCtrlrInput.XCI.GetAxis (XboxCtrlrInput.XboxAxis.LeftTrigger, controllerNumber);
 
@@ -33,9 +94,23 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 		yAxis = XboxCtrlrInput.XCI.GetAxis (XboxCtrlrInput.XboxAxis.LeftStickY, controllerNumber) * rotationSpeed;
+        
+        if (XCI.GetButton(XboxButton.RightBumper) && bumperDepressed==false){
+            bumperDepressed = true;
+            Debug.Log("Bumper");
+            boostBonus = GetComponent<PlayerPowerUps>().UsePowerUp();
+        }
+        else
+        {
+            bumperDepressed = XCI.GetButton(XboxButton.RightBumper);
+        }
 
-//		Debug.Log("xAxis: " + xAxis + " yAxis: " + yAxis + " rightTrigger: " + rightTriggerPressed + " leftTrigger: " + leftTriggerPressed + " Y: " + XboxCtrlrInput.XCI.GetButtonDown (XboxCtrlrInput.XboxButton.Y));
-	}
+        if (boostBonus > 1)
+        {
+            boostBonus -= 0.01f;
+        }
+        //		Debug.Log("xAxis: " + xAxis + " yAxis: " + yAxis + " rightTrigger: " + rightTriggerPressed + " leftTrigger: " + leftTriggerPressed + " Y: " + XboxCtrlrInput.XCI.GetButtonDown (XboxCtrlrInput.XboxButton.Y));
+    }
 
 	private void FixedUpdate() {
 //		this.rigidBody.velocity = new Vector3(xAxis, 0,  0);

@@ -130,8 +130,10 @@ public class Rocket : MonoBehaviour
     {
         Vector3 forward = transform.TransformDirection(Vector3.forward) * 10;
         Debug.DrawRay(transform.position, forward, Color.green);
+        RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, forward, 10))
+        //test new func
+        if (Physics.Raycast(transform.position, forward, out hit, 10) && hit.transform.tag != "CheckPoint")
             if (FindRoute() != Vector3.zero)
             {
                 ObstacleSeek(FindRoute());
