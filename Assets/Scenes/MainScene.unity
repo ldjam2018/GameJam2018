@@ -122,7 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 97195511}
   - component: {fileID: 97195512}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BarSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 138580241}
   - component: {fileID: 138580240}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera_Player1
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,7 +242,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294966527
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -267,6 +267,7 @@ Transform:
   - {fileID: 1314017267}
   - {fileID: 691509991}
   - {fileID: 830009758}
+  - {fileID: 1637181429}
   m_Father: {fileID: 1535517658}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 16.648, y: 0, z: 0}
@@ -398,7 +399,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 147520759}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: ButtonBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,7 +434,7 @@ GameObject:
   - component: {fileID: 181935121}
   - component: {fileID: 181935120}
   - component: {fileID: 181935119}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: PerfectHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -553,7 +554,7 @@ GameObject:
   - component: {fileID: 192005796}
   - component: {fileID: 192005795}
   - component: {fileID: 192005794}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BadHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -671,7 +672,7 @@ GameObject:
   m_Component:
   - component: {fileID: 193167213}
   - component: {fileID: 193167214}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: PowerBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,11 +686,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 193167212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.7, y: -0.63, z: 21}
+  m_LocalPosition: {x: -16.27, y: -0.63, z: 21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 669097928}
   - {fileID: 97195511}
+  - {fileID: 520877859}
   m_Father: {fileID: 783998092}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -715,7 +717,7 @@ GameObject:
   - component: {fileID: 252952617}
   - component: {fileID: 252952616}
   - component: {fileID: 252952615}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BadHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -955,7 +957,7 @@ GameObject:
   - component: {fileID: 278135625}
   - component: {fileID: 278135624}
   - component: {fileID: 278135623}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: GoodHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1073,7 +1075,7 @@ GameObject:
   m_Component:
   - component: {fileID: 324621625}
   - component: {fileID: 324621626}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BarFillSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1294,7 +1296,7 @@ GameObject:
   - component: {fileID: 369730245}
   - component: {fileID: 369730244}
   - component: {fileID: 369730243}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BadHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1414,7 +1416,7 @@ GameObject:
   - component: {fileID: 457838997}
   - component: {fileID: 457838996}
   - component: {fileID: 457838995}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BadHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1763,6 +1765,79 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &520877858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 520877859}
+  - component: {fileID: 520877860}
+  m_Layer: 9
+  m_Name: BarBackground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &520877859
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 520877858}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 5.73, y: -8.65, z: 0.23}
+  m_LocalScale: {x: 275.3319, y: 49.051723, z: 1}
+  m_Children: []
+  m_Father: {fileID: 193167213}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!212 &520877860
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 520877858}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: cfc89efbe5d8e475f9300c26ffb6d777, type: 3}
+  m_Color: {r: 0, g: 0.509803, b: 0.85294116, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!1 &523563794
 GameObject:
   m_ObjectHideFlags: 0
@@ -1773,7 +1848,7 @@ GameObject:
   m_Component:
   - component: {fileID: 523563795}
   - component: {fileID: 523563796}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1975,7 +2050,7 @@ GameObject:
   - component: {fileID: 573215708}
   - component: {fileID: 573215707}
   - component: {fileID: 573215706}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: GoodHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2095,7 +2170,7 @@ GameObject:
   - component: {fileID: 606566827}
   - component: {fileID: 606566826}
   - component: {fileID: 606566825}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: GoodHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2335,7 +2410,7 @@ GameObject:
   - component: {fileID: 638576497}
   - component: {fileID: 638576496}
   - component: {fileID: 638576495}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BadHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2452,7 +2527,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 669097928}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BarFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2525,6 +2600,7 @@ MonoBehaviour:
   targetX: {fileID: 1205264087}
   targetY: {fileID: 1547210243}
   bpm: 136
+  controllerNumber: 1
 --- !u!82 &691509993
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2616,7 +2692,7 @@ GameObject:
   - component: {fileID: 700665750}
   - component: {fileID: 700665749}
   m_Layer: 0
-  m_Name: UICamera
+  m_Name: UICameraPlayer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2660,13 +2736,13 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 131.8
+  field of view: 80.4
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2809,7 +2885,7 @@ GameObject:
   - component: {fileID: 720487826}
   - component: {fileID: 720487825}
   - component: {fileID: 720487824}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: PerfectHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3048,9 +3124,8 @@ GameObject:
   - component: {fileID: 783998092}
   - component: {fileID: 783998095}
   - component: {fileID: 783998094}
-  - component: {fileID: 783998093}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera_Player2
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3072,13 +3147,6 @@ Transform:
   m_Father: {fileID: 1717125891}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 16.648, y: 0, z: 0}
---- !u!81 &783998093
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 783998091}
-  m_Enabled: 1
 --- !u!124 &783998094
 Behaviour:
   m_ObjectHideFlags: 0
@@ -3110,7 +3178,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294966527
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3505,11 +3573,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 830009757}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.7, y: -0.63, z: 21}
+  m_LocalPosition: {x: -4.06, y: -0.63, z: 21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1535832490}
   - {fileID: 997754286}
+  - {fileID: 1038571531}
   m_Father: {fileID: 138580243}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3535,7 +3604,7 @@ GameObject:
   - component: {fileID: 852280617}
   - component: {fileID: 852280616}
   - component: {fileID: 852280615}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: GoodHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3655,7 +3724,7 @@ GameObject:
   - component: {fileID: 877599316}
   - component: {fileID: 877599315}
   - component: {fileID: 877599314}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: PerfectHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3895,7 +3964,7 @@ GameObject:
   - component: {fileID: 931928917}
   - component: {fileID: 931928916}
   - component: {fileID: 931928915}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: GoodHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4014,7 +4083,7 @@ GameObject:
   m_Component:
   - component: {fileID: 972707915}
   - component: {fileID: 972707916}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: YButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4096,7 +4165,7 @@ GameObject:
   - component: {fileID: 995058340}
   - component: {fileID: 995058339}
   - component: {fileID: 995058338}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: GoodHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4271,7 +4340,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 21300000, guid: ddc4e8e22a6ba4ff89ca155ca400fbc5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
@@ -4289,7 +4358,7 @@ GameObject:
   - component: {fileID: 1003329747}
   - component: {fileID: 1003329746}
   - component: {fileID: 1003329745}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: RemoveFromQueue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4398,6 +4467,79 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &1038571530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1038571531}
+  - component: {fileID: 1038571532}
+  m_Layer: 8
+  m_Name: BarBackground (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1038571531
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1038571530}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 6.02, y: -8.65, z: 0.23}
+  m_LocalScale: {x: 275.33228, y: 49.05183, z: 1}
+  m_Children: []
+  m_Father: {fileID: 830009758}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!212 &1038571532
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1038571530}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: cfc89efbe5d8e475f9300c26ffb6d777, type: 3}
+  m_Color: {r: 0, g: 0.509803, b: 0.85294116, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!1 &1062592344
 GameObject:
   m_ObjectHideFlags: 0
@@ -4409,7 +4551,7 @@ GameObject:
   - component: {fileID: 1062592348}
   - component: {fileID: 1062592347}
   - component: {fileID: 1062592346}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BadHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4610,7 +4752,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1111009481}
   - component: {fileID: 1111009482}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: AButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4773,7 +4915,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1226256186}
   - component: {fileID: 1226256187}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: XButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5259,7 +5401,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 81.2
+  field of view: 80.3
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -5405,7 +5547,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1446690640}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Beats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5588,7 +5730,7 @@ GameObject:
   - component: {fileID: 1517246738}
   - component: {fileID: 1517246737}
   - component: {fileID: 1517246736}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: GoodHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5711,8 +5853,8 @@ GameObject:
   - component: {fileID: 1535517660}
   - component: {fileID: 1535517659}
   m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
+  m_Name: Player01
+  m_TagString: Player01
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5777,7 +5919,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1535517654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 138580243}
@@ -5793,11 +5935,11 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 3
-  m_AngularDrag: 0.05
+  m_AngularDrag: 3
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &1535517660
 MonoBehaviour:
@@ -5812,6 +5954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 30
   rotationSpeed: 85
+  controllerNumber: 1
 --- !u!1 &1535832489
 GameObject:
   m_ObjectHideFlags: 0
@@ -6053,7 +6196,7 @@ GameObject:
   - component: {fileID: 1568994941}
   - component: {fileID: 1568994940}
   - component: {fileID: 1568994939}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: GoodHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6259,7 +6402,7 @@ GameObject:
   - component: {fileID: 1605292073}
   - component: {fileID: 1605292072}
   - component: {fileID: 1605292071}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BadHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6488,6 +6631,79 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &1637181428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1637181429}
+  - component: {fileID: 1637181430}
+  m_Layer: 8
+  m_Name: SplitScreenDivider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1637181429
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1637181428}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.0037, y: -4.37, z: 21}
+  m_LocalScale: {x: 1.5, y: 1242.7, z: 60.6}
+  m_Children: []
+  m_Father: {fileID: 138580243}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1637181430
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1637181428}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: cfc89efbe5d8e475f9300c26ffb6d777, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!1 &1715027768
 GameObject:
   m_ObjectHideFlags: 0
@@ -6623,7 +6839,7 @@ GameObject:
   - component: {fileID: 1717125886}
   m_Layer: 0
   m_Name: Player02
-  m_TagString: Untagged
+  m_TagString: Player02
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6637,11 +6853,11 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 3
-  m_AngularDrag: 0.05
+  m_AngularDrag: 3
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &1717125887
 MonoBehaviour:
@@ -6656,6 +6872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 30
   rotationSpeed: 85
+  controllerNumber: 2
 --- !u!23 &1717125888
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6761,7 +6978,7 @@ GameObject:
   - component: {fileID: 1921512617}
   - component: {fileID: 1921512619}
   - component: {fileID: 1921512618}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: RhythmManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6874,15 +7091,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a4fc678bfc4ac4e902e2d1de8b7a74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aBeat: {fileID: 1765591816503288, guid: c3d7850e0d404cf4a89af703bf2d18bf, type: 2}
-  bBeat: {fileID: 1782815458682434, guid: fbaa7bdac3b1f7041b4f90e2f7f36abc, type: 2}
-  xBeat: {fileID: 1097267588476468, guid: 1cfc7aa135a1ed74698983140ffee614, type: 2}
-  yBeat: {fileID: 1630802854392300, guid: d613eec5456d6814482779f10dff7c88, type: 2}
+  aBeat: {fileID: 1765591816503288, guid: 991664924d05f44d0ba1ebb98e00d8ff, type: 2}
+  bBeat: {fileID: 1782815458682434, guid: a87b35d94116d48209db710c925b13b6, type: 2}
+  xBeat: {fileID: 1097267588476468, guid: c3b178f7c247c4a77ac6c7c860e55553, type: 2}
+  yBeat: {fileID: 1630802854392300, guid: 15c769669ceca47feb4a728c1fc31a48, type: 2}
   targetA: {fileID: 1111009480}
   targetB: {fileID: 523563794}
   targetX: {fileID: 1226256185}
   targetY: {fileID: 972707914}
   bpm: 136
+  controllerNumber: 2
 --- !u!1 &1965770943
 GameObject:
   m_ObjectHideFlags: 0
@@ -6894,7 +7112,7 @@ GameObject:
   - component: {fileID: 1965770947}
   - component: {fileID: 1965770946}
   - component: {fileID: 1965770945}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BadHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7087,7 +7305,7 @@ GameObject:
   - component: {fileID: 2076654723}
   - component: {fileID: 2076654722}
   - component: {fileID: 2076654721}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: PerfectHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}

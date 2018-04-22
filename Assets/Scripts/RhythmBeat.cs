@@ -119,7 +119,7 @@ public class RhythmBeat : MonoBehaviour
 				popped = true;
 				stack.Dequeue ();
 				if (!completed) {
-					itemPowerBar.RemovePower (.1f);
+					itemPowerBar.RemovePower (.5f);
 				}
 			}
 		}

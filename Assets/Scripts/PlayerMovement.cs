@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -11,17 +12,19 @@ public class PlayerMovement : MonoBehaviour {
 	public float movementSpeed = 7;
 	public float rotationSpeed = 2;
 
+	public XboxController controllerNumber;
 
 	// Use this for initialization
 	void Start () {
 		this.rigidBody = GetComponent<Rigidbody>();
 
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		float rightTriggerPressed = XboxCtrlrInput.XCI.GetAxis (XboxCtrlrInput.XboxAxis.RightTrigger);
-		float leftTriggerPressed = XboxCtrlrInput.XCI.GetAxis (XboxCtrlrInput.XboxAxis.LeftTrigger);
+		float rightTriggerPressed = XboxCtrlrInput.XCI.GetAxis (XboxCtrlrInput.XboxAxis.RightTrigger, controllerNumber);
+		float leftTriggerPressed = XboxCtrlrInput.XCI.GetAxis (XboxCtrlrInput.XboxAxis.LeftTrigger, controllerNumber);
 
 		if (leftTriggerPressed == 1f) {
 			xAxis = 1 * movementSpeed;
@@ -29,7 +32,7 @@ public class PlayerMovement : MonoBehaviour {
 			xAxis = 0;
 		}
 
-		yAxis = XboxCtrlrInput.XCI.GetAxis (XboxCtrlrInput.XboxAxis.LeftStickY) * rotationSpeed;
+		yAxis = XboxCtrlrInput.XCI.GetAxis (XboxCtrlrInput.XboxAxis.LeftStickY, controllerNumber) * rotationSpeed;
 
 //		Debug.Log("xAxis: " + xAxis + " yAxis: " + yAxis + " rightTrigger: " + rightTriggerPressed + " leftTrigger: " + leftTriggerPressed + " Y: " + XboxCtrlrInput.XCI.GetButtonDown (XboxCtrlrInput.XboxButton.Y));
 	}

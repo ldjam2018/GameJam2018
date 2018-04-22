@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class RhythmManager : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class RhythmManager : MonoBehaviour
 
 	private bool gameStarted = false;
 
+	public XboxController controllerNumber;
+
     // Use this for initialization
     void Start()
     {
@@ -59,7 +62,7 @@ public class RhythmManager : MonoBehaviour
 
 	IEnumerator ControllerButtonListenter(XboxCtrlrInput.XboxButton button, Queue<GameObject> beats) {	//forever repeat the while loop
 		while (true) {
-			if (XboxCtrlrInput.XCI.GetButtonDown (button)){				//when A button is pressed
+			if (XboxCtrlrInput.XCI.GetButtonDown (button, controllerNumber)){				//when A button is pressed
 				if (beats.Count > 0) {															//check to see if there are any A buttons on the stack
 					//					float t = CalculateScoreFromBeat (aBeats);									//if there is, calculate the score from it
 					float score = beats.Peek ().GetComponent<RhythmBeat>().Score;
