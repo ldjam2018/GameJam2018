@@ -9,7 +9,7 @@ public class RhythmBeat : MonoBehaviour
 		 get {return timeElapsed;}
 	}
 
-
+    public GameObject explosion;
     public Vector3 startPosition;
 	public GameObject target;
     public float timeToReachTarget;
@@ -92,8 +92,8 @@ public class RhythmBeat : MonoBehaviour
 			transform.localScale = new Vector3 (gameObject.transform.localScale.x - reduceScaleByPerFrame, gameObject.transform.localScale.y - reduceScaleByPerFrame, gameObject.transform.localScale.z - reduceScaleByPerFrame);
 			yield return 0;
 		}
-
-		Destroy(gameObject);
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        Destroy(gameObject);
 
 	}
 

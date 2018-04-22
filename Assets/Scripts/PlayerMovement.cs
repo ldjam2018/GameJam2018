@@ -76,10 +76,10 @@ public class PlayerMovement : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		this.rigidBody = GetComponent<Rigidbody>();
-        minimumSpeed = 60;
-        maximumSpeed = 180;
-        movementSpeed = 60;
-        rotationSpeed = 120;
+        minimumSpeed = 20;
+        maximumSpeed = 80;
+        movementSpeed = 20;
+        rotationSpeed = 100;
         powerBar = transform.GetChild(0).transform.GetChild(2).gameObject;
         boostBonus = 1f;
 

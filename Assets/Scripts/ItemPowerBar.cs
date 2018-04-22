@@ -34,7 +34,7 @@ public class ItemPowerBar : MonoBehaviour {
 		
 	public void AddPower(float powerValue) {
 		Debug.Log ("Added " + powerValue);
-		powerBarFill += powerValue;
+		powerBarFill += (powerValue*2);
 		RefillPowerBar ();
 	}
 

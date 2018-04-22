@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1764e6e7c78c414186a642c1c468005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 1908043860555344, guid: 322e3ff322918174381538ebec7815f3, type: 2}
   startPosition: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
   timeToReachTarget: 2
