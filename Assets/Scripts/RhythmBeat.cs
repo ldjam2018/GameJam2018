@@ -92,7 +92,8 @@ public class RhythmBeat : MonoBehaviour
 			transform.localScale = new Vector3 (gameObject.transform.localScale.x - reduceScaleByPerFrame, gameObject.transform.localScale.y - reduceScaleByPerFrame, gameObject.transform.localScale.z - reduceScaleByPerFrame);
 			yield return 0;
 		}
-        Instantiate(explosion, transform.position, Quaternion.identity);
+		GameObject beatExplosionInstance = Instantiate(explosion, transform.position, Quaternion.identity);
+		beatExplosionInstance.transform.SetParent (this.transform.parent, true);
         Destroy(gameObject);
 
 	}

@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		this.rigidBody = GetComponent<Rigidbody>();
-        minimumSpeed = 20;
+        minimumSpeed = 30;
         maximumSpeed = 80;
         movementSpeed = 20;
         rotationSpeed = 100;
