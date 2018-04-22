@@ -10,8 +10,20 @@ public class ItemPowerBar : MonoBehaviour {
 	float numToFillBar = 15f;
 
 
-	// Use this for initialization
-	void Start () {
+
+    public float GetSpeed(float minSpeed,  float maxSpeed)
+    {
+        return Map(powerBarFill, 0, 15f, minSpeed, maxSpeed);
+    }
+
+    //maps a value from one range to another
+    private float Map(float value, float originalMin, float originalMax, float newMin, float newMax)
+    {
+        return (newMin + (value - originalMin) * (newMax - newMin) / (originalMax - originalMin));
+    }
+
+    // Use this for initialization
+    void Start () {
 		barFill = this.transform.GetChild (0).gameObject;
 	}
 	
