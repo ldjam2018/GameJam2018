@@ -11,7 +11,7 @@ public class Rocket : MonoBehaviour
     public float explodeDistance = 1000f;
    
     private Rigidbody rigidbody;
-    public GameObject enemyTarget;
+    private GameObject enemyTarget;
 
     public GameObject explosion;
 
@@ -21,6 +21,10 @@ public class Rocket : MonoBehaviour
         this.rigidbody = GetComponent<Rigidbody>();
     }
 
+    public void SetTarget(GameObject target)
+    {
+        this.enemyTarget = target;
+    }
 
     void Explode()
     {
