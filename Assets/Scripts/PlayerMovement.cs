@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using XboxCtrlrInput;
 
 public class PlayerMovement : MonoBehaviour {
@@ -15,7 +16,9 @@ public class PlayerMovement : MonoBehaviour {
     public float maximumSpeed;
     public float rotationSpeed;
     public float boostBonus;
-    public GameObject powerBar;
+	private GameObject powerBar;
+
+	public Text lapText;
 
 	public XboxController controllerNumber;
 
@@ -32,7 +35,6 @@ public class PlayerMovement : MonoBehaviour {
     /// </summary>
     public void SetCurrentCheckpointNo(int checkpointNo)
     {
-
         currentCheckpoint = checkpointNo;
     }
 
@@ -45,12 +47,13 @@ public class PlayerMovement : MonoBehaviour {
         return currentCheckpoint;
     }
 
-
     public void IncrementLap()
     {
+		Debug.Log ("incrementing lap");
         if (lap < raceNumOfLaps)
         {   //if not on the final lap
             lap++;  //increment lap
+			lapText.text = "Lap: " + (lap+1) + "/" + raceNumOfLaps;
                     //			GameObject.Find ("GUICanvas").GetComponent<GUITimer> ().UpdateLapsElapsedText (lap, raceNumOfLaps);	//update the GUI to display lap counter
         }
         else
@@ -79,6 +82,9 @@ public class PlayerMovement : MonoBehaviour {
         rotationSpeed = 120;
         powerBar = transform.GetChild(0).transform.GetChild(2).gameObject;
         boostBonus = 1f;
+
+		lapText.text = "Lap: " + (lap+1) + "/" + raceNumOfLaps;
+
 	}
 	
 	// Update is called once per frame
@@ -95,9 +101,9 @@ public class PlayerMovement : MonoBehaviour {
 
 		yAxis = XboxCtrlrInput.XCI.GetAxis (XboxCtrlrInput.XboxAxis.LeftStickY, controllerNumber) * rotationSpeed;
         
-        if (XCI.GetButton(XboxButton.RightBumper) && bumperDepressed==false){
+		if (XCI.GetButton(XboxButton.RightBumper, controllerNumber) && bumperDepressed == false){
             bumperDepressed = true;
-            Debug.Log("Bumper");
+//            Debug.Log("Bumper");
             boostBonus = GetComponent<PlayerPowerUps>().UsePowerUp();
         }
         else
@@ -105,10 +111,12 @@ public class PlayerMovement : MonoBehaviour {
             bumperDepressed = XCI.GetButton(XboxButton.RightBumper);
         }
 
-        if (boostBonus > 1)
-        {
-            boostBonus -= 0.01f;
-        }
+		if (boostBonus > 1) {
+			boostBonus -= 0.02f;
+//			Debug.Log
+		} else {
+			boostBonus = 1f;
+		}
         //		Debug.Log("xAxis: " + xAxis + " yAxis: " + yAxis + " rightTrigger: " + rightTriggerPressed + " leftTrigger: " + leftTriggerPressed + " Y: " + XboxCtrlrInput.XCI.GetButtonDown (XboxCtrlrInput.XboxButton.Y));
     }
 
