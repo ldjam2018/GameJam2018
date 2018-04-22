@@ -8,6 +8,8 @@ TagManager:
   - Player01
   - Player02
   - Explosion
+  - BoostPickup
+  - RocketPickup
   layers:
   - Default
   - TransparentFX
