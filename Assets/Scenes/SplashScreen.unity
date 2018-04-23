@@ -353,7 +353,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6810dd6a7a00749b1afbecd5a873c5f0, type: 3}
-    m_FontSize: 21
+    m_FontSize: 29
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -364,18 +364,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Rhythm Racer mixes the genres of Racer and Rhythm, forcing the player to
-    complete two tasks simultaneously to win. The game is played using controllers,
-    and is two Player, with the winner being the first to complete three laps of the
-    track.
+  m_Text: 'Rhythm Racer is a two Player game played using controllers. The winner
+    if the player who is first to complete three laps of the track.
 
 
     As you drive around the course it is essential to simultaneously complete the
     rhythm game on the screen as well, otherwise your vehicle will only run at the
-    slowest of speeds. The fuller the power bar, the faster you can drive.
-
-
-    Created by Dave Lewis, Joshua Weeden and Stanley Lewry for Ludum Dare 41.'
+    slowest of speeds. The fuller the power bar, the faster you can drive.'
 --- !u!222 &269241274
 CanvasRenderer:
   m_ObjectHideFlags: 0
