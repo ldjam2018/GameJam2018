@@ -69,8 +69,6 @@ public class RhythmManager : MonoBehaviour
 
 		itemPowerBar = transform.parent.GetChild (2).GetComponent<ItemPowerBar> ();
 
-		Debug.Log(targetA.transform.GetChild ((targetA.transform.childCount-1)).name);
-
 		aButtonSpriteRenderer = targetA.transform.GetChild ((targetA.transform.childCount-1)).GetComponent<SpriteRenderer>();
 		bButtonSpriteRenderer = targetB.transform.GetChild ((targetB.transform.childCount-1)).GetComponent<SpriteRenderer>();
 		xButtonSpriteRenderer = targetX.transform.GetChild ((targetX.transform.childCount-1)).GetComponent<SpriteRenderer>();
