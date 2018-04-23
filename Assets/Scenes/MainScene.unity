@@ -3862,7 +3862,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 691509990}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.26, y: -5.35, z: 21.59}
+  m_LocalPosition: {x: -3.3, y: -5.35, z: 21.59}
   m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_Children:
   - {fileID: 1483134812}
@@ -9124,7 +9124,7 @@ MonoBehaviour:
   controllerNumber: 1
   currentCheckpoint: 0
   lap: 0
-  raceNumOfLaps: 1
+  raceNumOfLaps: 3
 --- !u!114 &1535517661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10290,7 +10290,7 @@ MonoBehaviour:
   controllerNumber: 2
   currentCheckpoint: 0
   lap: 0
-  raceNumOfLaps: 1
+  raceNumOfLaps: 3
 --- !u!114 &1717125888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10898,7 +10898,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1921512616}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3, y: -5.35, z: 21.59}
+  m_LocalPosition: {x: -1.5, y: -5.35, z: 21.59}
   m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_Children:
   - {fileID: 147520759}
@@ -11338,13 +11338,13 @@ Camera:
   m_GameObject: {fileID: 1969199230}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0.499
     y: 0
-    width: 0
+    width: 0.002
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -11373,7 +11373,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1969199230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.51, y: 0.34627813, z: -8.07}
+  m_LocalPosition: {x: -5967, y: 0.34627813, z: -8.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
