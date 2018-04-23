@@ -19,7 +19,6 @@ public class PlayerPowerUps : MonoBehaviour {
         if (this.transform.tag == "Player01")
         {
             enemy = GameObject.FindWithTag("Player02");
-			Debug.Log (enemy.name);
         }
         else
         {
@@ -70,6 +69,7 @@ public class PlayerPowerUps : MonoBehaviour {
     {
        if (col.gameObject.tag == "BoostPickup")
         {
+			col.gameObject.GetComponent<Collider> ().enabled = false;
             isBoostActive = true;
             isRocketActive = false;
 
@@ -80,6 +80,8 @@ public class PlayerPowerUps : MonoBehaviour {
 
         if (col.gameObject.tag == "RocketPickup")
         {
+			col.gameObject.GetComponent<Collider> ().enabled = false;
+
             isBoostActive = false;
             isRocketActive = true;
 
