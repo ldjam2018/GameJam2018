@@ -19,7 +19,6 @@ public class PlayerPowerUps : MonoBehaviour {
         if (this.transform.tag == "Player01")
         {
             enemy = GameObject.FindWithTag("Player02");
-			Debug.Log (enemy.name);
         }
         else
         {

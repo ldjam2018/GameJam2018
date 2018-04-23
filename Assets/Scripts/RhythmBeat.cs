@@ -26,6 +26,12 @@ public class RhythmBeat : MonoBehaviour
 		get {return score;}
 	}
 
+	bool badTop = false;
+	bool goodTop = false;
+	bool perfect = false;
+	bool goodBottom = false;
+	bool badBottom = false;
+
     void Start()
     {
         startPosition = transform.position;
@@ -34,6 +40,48 @@ public class RhythmBeat : MonoBehaviour
 
 	void ResetScore(){
 		score = 0;
+	}
+
+	public void CalculateBeatScore() {
+		int numberMatched = 0;
+
+		if (badTop == true) {
+			numberMatched++;
+		}
+		if (goodTop == true) {
+			numberMatched++;
+		}
+		if (perfect == true) {
+			numberMatched++;
+		}
+		if (badBottom == true) {
+			numberMatched++;
+		}
+		if (goodBottom == true) {
+			numberMatched++;
+		}
+
+		switch (numberMatched) {
+		case 5:
+			score = 1;
+			//set text
+			break;
+		case 4:
+			score = .65f;
+			break;
+		case 3:
+			score = .4f;
+			break;
+		case 2:
+			score = .25f;
+			break;
+		case 1:
+			score = .1f;
+			break;
+		case 0:
+			score = -2f;
+			break;
+		}
 	}
 
     void Update()
@@ -99,21 +147,21 @@ public class RhythmBeat : MonoBehaviour
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
-		if (coll.gameObject.name == "BadHit") {
-//			Debug.Log ("Hit bad");
-			if (score < .2f && timeElapsed > .1f) {
-				score = .2f;
-			}
+		if (coll.gameObject.name == "BadHitTop") {
+			badTop = true;
 		}
-		else if (coll.gameObject.name == "GoodHit") {
-			if (score < .5f) {
-				score = .5f;
-			}
+		else if (coll.gameObject.name == "GoodHitTop") {
+			goodTop = true;
+
 		}
-		else if (coll.gameObject.name == "GoodHit") {
-			if (score < 1f) {
-				score = 1f;
-			}
+		else if (coll.gameObject.name == "PerfectHit") {
+			perfect = true;
+		}
+		else if (coll.gameObject.name == "GoodHitBottom") {
+			goodBottom = true;
+		}
+		else if (coll.gameObject.name == "BadHitBottom") {
+			badBottom = true;
 		}
 		else if (coll.gameObject.name == "RemoveFromQueue") {
 			if (!popped) {
@@ -128,20 +176,21 @@ public class RhythmBeat : MonoBehaviour
 	}
 
 	void OnCollisionExit2D(Collision2D coll) {
-		if (coll.gameObject.name == "BadHit") {
-//			Debug.Log ("Exiting bad");
+		if (coll.gameObject.name == "BadHitTop") {
+			badTop = false;
+		}
+		else if (coll.gameObject.name == "GoodHitTop") {
+			goodTop = false;
 
-			if (score == .2f) {		//if in the final bad - revert back to no score
-				score = 0f;
-			}
 		}
-		if (coll.gameObject.name == "GoodHit") {
-			if (score <= .5f) {		//if not still in perfect
-				score = .2f;		//revert back to bad score
-			}
+		else if (coll.gameObject.name == "PerfectHit") {
+			perfect = false;
 		}
-		if (coll.gameObject.name == "PerfectHit") {
-			score = .5f;			//revert back to good score
+		else if (coll.gameObject.name == "GoodHitBottom") {
+			goodBottom = false;
+		}
+		else if (coll.gameObject.name == "BadHitBottom") {
+			badBottom = false;
 		}
 	} 
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using XboxCtrlrInput;
 
 public class RhythmManager : MonoBehaviour
@@ -31,8 +32,29 @@ public class RhythmManager : MonoBehaviour
 	private ItemPowerBar itemPowerBar;
 
 	private bool gameStarted = false;
+	public bool GameStarted {
+		set { gameStarted = value; }
+	}
 
 	public XboxController controllerNumber;
+
+
+	private SpriteRenderer aButtonSpriteRenderer;
+	private SpriteRenderer bButtonSpriteRenderer;
+	private SpriteRenderer xButtonSpriteRenderer;
+	private SpriteRenderer yButtonSpriteRenderer;
+
+	public Sprite badSprite;
+	public Sprite goodSprite;
+	public Sprite okaySprite;
+	public Sprite perfectSprite;
+	public Sprite missSprite;
+
+	private float aButtonLabelTimer = 0;
+	private float bButtonLabelTimer = 0;
+	private float xButtonLabelTimer = 0;
+	private float yButtonLabelTimer = 0;
+
 
     // Use this for initialization
     void Start()
@@ -45,47 +67,67 @@ public class RhythmManager : MonoBehaviour
 		xBeats = new Queue<GameObject>();
 		yBeats = new Queue<GameObject>();
 
-
 		itemPowerBar = transform.parent.GetChild (2).GetComponent<ItemPowerBar> ();
+
+		Debug.Log(targetA.transform.GetChild ((targetA.transform.childCount-1)).name);
+
+		aButtonSpriteRenderer = targetA.transform.GetChild ((targetA.transform.childCount-1)).GetComponent<SpriteRenderer>();
+		bButtonSpriteRenderer = targetB.transform.GetChild ((targetB.transform.childCount-1)).GetComponent<SpriteRenderer>();
+		xButtonSpriteRenderer = targetX.transform.GetChild ((targetX.transform.childCount-1)).GetComponent<SpriteRenderer>();
+		yButtonSpriteRenderer = targetY.transform.GetChild ((targetY.transform.childCount-1)).GetComponent<SpriteRenderer>();
+
 
 		CallInputListeners ();	//starts listening for button presses
     }
 
+	private IEnumerator CheckButtonLabelTimer(SpriteRenderer buttonSpriteRenderer, float labelCountdownTimer) {
+		while (labelCountdownTimer > 0) {
+			labelCountdownTimer -= Time.deltaTime;
+			if (labelCountdownTimer < 0) {
+				buttonSpriteRenderer.enabled = false;
+			}
+
+			yield return 0;
+		}
+	}
+
+
 
 	void CallInputListeners() {
 
-		StartCoroutine(ControllerButtonListenter(XboxCtrlrInput.XboxButton.A, aBeats));
-		StartCoroutine(ControllerButtonListenter(XboxCtrlrInput.XboxButton.B, bBeats));
-		StartCoroutine(ControllerButtonListenter(XboxCtrlrInput.XboxButton.X, xBeats));
-		StartCoroutine(ControllerButtonListenter(XboxCtrlrInput.XboxButton.Y, yBeats));
+		StartCoroutine(ControllerButtonListenter(XboxCtrlrInput.XboxButton.A, aBeats, aButtonSpriteRenderer, aButtonLabelTimer));
+		StartCoroutine(ControllerButtonListenter(XboxCtrlrInput.XboxButton.B, bBeats, bButtonSpriteRenderer, bButtonLabelTimer));
+		StartCoroutine(ControllerButtonListenter(XboxCtrlrInput.XboxButton.X, xBeats, xButtonSpriteRenderer, xButtonLabelTimer));
+		StartCoroutine(ControllerButtonListenter(XboxCtrlrInput.XboxButton.Y, yBeats, yButtonSpriteRenderer, yButtonLabelTimer));
 	}
 
-	IEnumerator ControllerButtonListenter(XboxCtrlrInput.XboxButton button, Queue<GameObject> beats) {	//forever repeat the while loop
+	IEnumerator ControllerButtonListenter(XboxCtrlrInput.XboxButton button, Queue<GameObject> beats, SpriteRenderer buttonSpriteRenderer, float labelCountdownTimer) {	//forever repeat the while loop
 		while (true) {
 			if (XboxCtrlrInput.XCI.GetButtonDown (button, controllerNumber)){				//when A button is pressed
-				if (beats.Count > 0) {															//check to see if there are any A buttons on the stack
-					//					float t = CalculateScoreFromBeat (aBeats);									//if there is, calculate the score from it
-					float score = beats.Peek ().GetComponent<RhythmBeat>().Score;
-					if (score == .2f) {																//if the beat was correctly hit on time
-						itemPowerBar.AddPower (score);		//add score to the power bar
-						beats.Peek ().GetComponent<RhythmBeat> ().DestroyBeat (true);				//then destroy the beat
-						//scale up and red
-						//text bad
-					} else if (score == .5f) {
-						beats.Peek ().GetComponent<RhythmBeat> ().DestroyBeat (true);				//then destroy the beat
-						itemPowerBar.AddPower (score);	//remove score from the power bar
-						//particle effect for hitting on time
-						//mid animation - scale up and yellow
-						//text good!
-					} else if (score == 1f) {
-						beats.Peek ().GetComponent<RhythmBeat> ().DestroyBeat (true);				//then destroy the beat
-						itemPowerBar.AddPower (score);	//remove score from the power bar
-						//particle effect for hitting on time
-						//good animation - scale up and green
-						//text Perfect!
+				if (beats.Count > 0) {														//check to see if there are any A buttons on the stack
+					beats.Peek ().GetComponent<RhythmBeat>().CalculateBeatScore();			//calculate the score for the beat
+					float score = beats.Peek ().GetComponent<RhythmBeat>().Score;			//get the score for the beat
+					itemPowerBar.AddPower (score);		//add score to the power bar		//add the score for the beat
+					beats.Peek ().GetComponent<RhythmBeat> ().DestroyBeat (true);			//then destroy the beat
+
+					labelCountdownTimer = .5f;												//time until label disappears
+					buttonSpriteRenderer.enabled = true;									//reenable the sprite renderer
+					StartCoroutine(CheckButtonLabelTimer(buttonSpriteRenderer, labelCountdownTimer));
+
+					if (score == 1) {
+						buttonSpriteRenderer.sprite = perfectSprite;
+					} else if (score == .65f) {
+						buttonSpriteRenderer.sprite = goodSprite;
+					} else if (score == .4f || score == .25f) {
+						buttonSpriteRenderer.sprite = okaySprite;
+					} else if (score == .1f) {
+						buttonSpriteRenderer.sprite = badSprite;
+					} else if (score == -2f) {
+						buttonSpriteRenderer.sprite = missSprite;
 					}
-				} else if (gameStarted) {													//else there are not points in stack - but the game has started
-					itemPowerBar.RemovePower (.15f);	//remove score from the power bar
+				} 
+				else if (gameStarted) {														//else there are no beats in stack - but the game has started
+					itemPowerBar.RemovePower (2f);	//remove score from the power bar
 					//play bad noise
 					//bad animation - scale up and red
 				} else /*if (!gameStarted)*/{												//else the game has not started
@@ -96,19 +138,22 @@ public class RhythmManager : MonoBehaviour
 			yield return 0;
 		}
 	}
-
+		
     // Update is called once per frame
     void Update()
     {
-        deltaTime = GetComponent<AudioSource>().time - lastTime;
-        timer += deltaTime;
+		deltaTime = GetComponent<AudioSource> ().time - lastTime;
 
-        if (timer >= (60f / bpm))
-        {
-			CreateNewNote();  
-            timer -= (60f / bpm);           
-        }
-        lastTime = GetComponent<AudioSource>().time;
+		if (gameStarted) {
+			timer += deltaTime;
+
+			if (timer >= (60f / bpm)) {
+				CreateNewNote ();  
+				timer -= (60f / bpm);           
+			}
+		}
+		lastTime = GetComponent<AudioSource> ().time;
+
     }
 
 	private void CreateNewNote() {

@@ -33,8 +33,13 @@ public class ItemPowerBar : MonoBehaviour {
 	}
 		
 	public void AddPower(float powerValue) {
-		Debug.Log ("Added " + powerValue);
+//		Debug.Log ("Added " + powerValue);
 		powerBarFill += (powerValue);
+		if (powerBarFill > numToFillBar) {
+			powerBarFill = numToFillBar;
+		} else if (powerBarFill < 0) {
+			powerBarFill = 0;
+		}
 		RefillPowerBar ();
 	}
 
