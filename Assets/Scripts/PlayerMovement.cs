@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using XboxCtrlrInput;
 
 public class PlayerMovement : MonoBehaviour {
@@ -23,8 +24,11 @@ public class PlayerMovement : MonoBehaviour {
 	private float rotationTimer = 0f;
 
 	public Text lapText;
+	public Text pressStartToBeginText;
 
 	public XboxController controllerNumber;
+
+	private static int carsFinished = 0;
 
     //------------------------------------------------------------------------
 
@@ -52,20 +56,37 @@ public class PlayerMovement : MonoBehaviour {
 
     public void IncrementLap()
     {
-		Debug.Log ("incrementing lap");
-        if (lap < raceNumOfLaps)
+		Debug.Log ("NextLap run Lap: " + lap + "/" + raceNumOfLaps);
+        if (lap < raceNumOfLaps-1)
         {   //if not on the final lap
+			Debug.Log ("incrementing lap");
             lap++;  //increment lap
 			lapText.text = "Lap: " + (lap+1) + "/" + raceNumOfLaps;
         }
         else
         {   //else player has completed their final lap
+			Debug.Log ("race over");
+
             setMovementDisabled(true);  //disabled movement as player has finished
+			RaceComplete();
         }
     }
 
+	private void RaceComplete() {
+		if (carsFinished == 0) {
+			transform.GetChild (2).GetChild (0).GetComponent<SpriteRenderer> ().enabled = true;
+			carsFinished++;
+		} else {
+			transform.GetChild (2).GetChild (1).GetComponent<SpriteRenderer> ().enabled = true;
+			carsFinished++;
+		}
+
+		pressStartToBeginText.text = "PRESS START TO RESTART";
+	}
+
     public void setMovementDisabled(bool isDisabled)
     {
+		
         movementDisabled = isDisabled;
     }
 
@@ -109,6 +130,11 @@ public class PlayerMovement : MonoBehaviour {
 				boostBonus = 1f;
 			}
 
+
+		}
+
+		if (XCI.GetButton (XboxButton.Start)) {
+			SceneManager.LoadScene("MainScene");
 		}
 		//Debug.Log("xAxis: " + xAxis + " yAxis: " + yAxis + " rightTrigger: " + rightTriggerPressed + " leftTrigger: " + leftTriggerPressed + " Y: " + XboxCtrlrInput.XCI.GetButtonDown (XboxCtrlrInput.XboxButton.Y));
     }
@@ -118,7 +144,6 @@ public class PlayerMovement : MonoBehaviour {
 
 			carModel.transform.Rotate (0, -.2f, 0, Space.Self);
 			rotationTimer += Time.deltaTime;
-			Debug.Log ("roting");
 		}
 
 		if (yAxis > 0f && rotationTimer > -.3f) {
@@ -140,7 +165,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 	private void CalculateCurrentSpeed() {
 		movementSpeed = powerBar.GetComponent<ItemPowerBar>().GetSpeed(minimumSpeed, maximumSpeed)*boostBonus;		//calculate current max speed that can be reached
-		float rightTriggerPressed = XboxCtrlrInput.XCI.GetAxis (XboxCtrlrInput.XboxAxis.RightTrigger, controllerNumber);
+//		float rightTriggerPressed = XboxCtrlrInput.XCI.GetAxis (XboxCtrlrInput.XboxAxis.RightTrigger, controllerNumber);
 		float leftTriggerPressed = XboxCtrlrInput.XCI.GetAxis (XboxCtrlrInput.XboxAxis.LeftTrigger, controllerNumber);
 
 
@@ -200,15 +225,12 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 	private void FixedUpdate() {
-	
-		Vector3 movement = transform.rotation * Vector3.forward;	//calculate movement direction by rotation
+		if (!movementDisabled) {
+			Vector3 movement = transform.rotation * Vector3.forward;	//calculate movement direction by rotation
 
-		rigidBody.AddForce (xAxis  * Time.deltaTime * movement, ForceMode.Impulse);	
+			rigidBody.AddForce (xAxis  * Time.deltaTime * movement, ForceMode.Impulse);	
 
-		transform.Rotate (Vector3.up, (yAxis * CalculateRotationSpeed()) * Time.deltaTime);	//steering
-
+			transform.Rotate (Vector3.up, (yAxis * CalculateRotationSpeed()) * Time.deltaTime);	//steering
+		}
 	}
 }
-
-
-//4.5 degrees max rotation when turning

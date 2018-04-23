@@ -79,7 +79,7 @@ MonoBehaviour:
   motionBlur:
     m_Enabled: 0
     m_Settings:
-      shutterAngle: 270
+      shutterAngle: 360
       sampleCount: 10
       frameBlending: 0
   eyeAdaptation:
@@ -109,7 +109,7 @@ MonoBehaviour:
         texture: {fileID: 0}
         intensity: 3
   colorGrading:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       tonemapping:
         tonemapper: 2
@@ -123,8 +123,8 @@ MonoBehaviour:
         postExposure: 0
         temperature: 0
         tint: 0
-        hueShift: 0
-        saturation: 1
+        hueShift: 54
+        saturation: 1.991
         contrast: 1
       channelMixer:
         red: {x: 1, y: 0, z: 0}
@@ -289,7 +289,7 @@ MonoBehaviour:
     m_Enabled: 0
     m_Settings:
       colored: 1
-      intensity: 0.5
+      intensity: 0.15
       size: 1
       luminanceContribution: 0.8
   vignette:

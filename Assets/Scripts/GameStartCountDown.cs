@@ -20,9 +20,6 @@ public class GameStartCountDown : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-
-
 		Invoke ("BeginGameCountDown", 3.2f);
 
 		StartCoroutine (DisplayLogo ());
@@ -30,7 +27,6 @@ public class GameStartCountDown : MonoBehaviour {
 
 	private IEnumerator DisplayLogo() {
 		float waitTime = 0.3947368421f;
-		float endWaitTime = 3.2f - (waitTime * 4);
 
 		yield return new WaitForSeconds (waitTime);
 		logo.GetComponent<Image> ().enabled = true;
